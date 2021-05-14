@@ -258,6 +258,8 @@ endpoint:{
 > :warning: **WIP, This section is incomplete.**
 
 # 5. Changelog
+* `1.0.20`: 
+  * Improved instructions sections organisation/numbering
 * `1.0.19`: 
   * Created git repository
   * Updated links to git repository
