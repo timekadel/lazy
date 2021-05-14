@@ -270,12 +270,10 @@ endpoint:{
 
 
 # 5. Changelog
-* `1.0.20`: 
+* `1.0.19`: 
   * Created git repository
   * Updated links to git repository
-* `1.0.19`: 
   * Updated Model declaration examples
-  * 
 * `1.0.18`: 
   * Patched lazy.model.js to multiple join queries on same foreign table.
   * Numbered instruction sections to make things clearer
