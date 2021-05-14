@@ -1,0 +1,35 @@
+{
+  "name": "@timekadel/lazy",
+  "version": "1.0.18",
+  "description": "Node.js API framework made by lazy developers for lazy developers",
+  "main": "./index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "framework",
+    "ORM",
+    "MySQL",
+    "integration testing",
+    "lazy",
+    "express",
+    "socket.io"
+  ],
+  "author": "roomz",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-csp-header": "^4.0.0",
+    "fs": "0.0.1-security",
+    "mysql2": "^2.2.5",
+    "socket.io": "^2.3.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "chalk": "^4.1.0",
+    "mocha": "^8.2.1"
+  }
+}
