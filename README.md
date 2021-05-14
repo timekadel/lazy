@@ -12,20 +12,14 @@ __Table of contents__
     - [3.1.2. Server Options](#312-server-options)
     - [3.1.3. IO Options](#313-io-options)
 - [4. Describing Lazys](#4-describing-lazys)
-  - [4.1. Lazy Configuration Options](#41-lazy-configuration-options)
-  - [4.2. Describing Models](#42-describing-models)
-  - [4.3. Model Configuration Options](#43-model-configuration-options)
-    - [4.3.1. Describing Schemas](#431-describing-schemas)
-    - [4.3.2. Schema Configuration Options](#432-schema-configuration-options)
-      - [4.3.2.1. Describing Columns](#4321-describing-columns)
-      - [4.3.2.2. Column Configuration Options](#4322-column-configuration-options)
-        - [4.3.2.2.1. Foreign Key Configuration](#43221-foreign-key-configuration)
-        - [4.3.2.2.2. Foreign Key Configuration Options](#43222-foreign-key-configuration-options)
-    - [4.3.3. Model Declaration Examples](#433-model-declaration-examples)
-      - [4.3.3.1. Simple User Model](#4331-simple-user-model)
-      - [4.3.3.2. "Complex" Friend Model (with foreign key constraints)](#4332-complex-friend-model-with-foreign-key-constraints)
-  - [4.4. Configuring Endpoints](#44-configuring-endpoints)
-  - [4.5. Endpoint Configuration Options](#45-endpoint-configuration-options)
+  - [4.1. Describing Models](#41-describing-models)
+    - [4.1.1. Describing Schemas](#411-describing-schemas)
+      - [4.1.1.1. Describing Columns](#4111-describing-columns)
+        - [4.1.1.1.1. Foreign Key Configuration](#41111-foreign-key-configuration)
+    - [4.1.2. Model Declaration Examples](#412-model-declaration-examples)
+      - [4.1.2.1. Simple User Model](#4121-simple-user-model)
+      - [4.1.2.2. "Complex" Friend Model (with foreign key constraints)](#4122-complex-friend-model-with-foreign-key-constraints)
+  - [4.2. Configuring Endpoints](#42-configuring-endpoints)
 - [5. Changelog](#5-changelog)
 - [6. Appendix](#6-appendix)
   - [6.1. Supported Column Types](#61-supported-column-types)
@@ -114,7 +108,6 @@ module.exports = {
 }
 ```
 
-## 4.1. Lazy Configuration Options
 * `name`: Unique name used to identify and require a Lazy
 * `model`: Lazy's [model description](#describing-models)
 * `endpoint`: Lazy's [endpoint configuration](#configuring-endpoint)
@@ -122,18 +115,17 @@ module.exports = {
 To give a better overall understanding of Lazy's syntax and operation, the following sections will be based around a very simple example described below:
 
 
-## 4.2. Describing Models
+## 4.1. Describing Models
 ```js
 model:{
     table: String,
     schema: Object
 }
 ```
-## 4.3. Model Configuration Options
 * `table`: Database's table name
 * `schema`: Lazy's [schema configuration object](#describing-schemas)
 
-### 4.3.1. Describing Schemas
+### 4.1.1. Describing Schemas
 ```js
 schema:{
     column_1_name: Object,
@@ -141,11 +133,10 @@ schema:{
     column_n_name: Object
 }
 ```
-### 4.3.2. Schema Configuration Options
 * `column_1_name`: First [column configuration object](#describing-columns)
 * `column_n_name`: Last [column configuration object](#describing-columns)
 
-#### 4.3.2.1. Describing Columns
+#### 4.1.1.1. Describing Columns
 ```js
 column_name:{
     type: String,
@@ -155,15 +146,13 @@ column_name:{
     fk: Object
 }
 ```
-
-#### 4.3.2.2. Column Configuration Options
 * `type`: Column type. (see [supported types section](supported-column-types) for valid options):
 * `size`: Column size (If required. see [supported types section](supported-types))
 * `default`: Column's default value
 * `pk`: Select column as primary key
 * `fk`: Column [foreign key configuration object](#foreign-key-configuration)
 
-##### 4.3.2.2.1. Foreign Key Configuration
+##### 4.1.1.1.1. Foreign Key Configuration
 ```js
 fk:{
     join: Object<Lazy>,
@@ -173,19 +162,18 @@ fk:{
     update: String,
 }
 ```
-##### 4.3.2.2.2. Foreign Key Configuration Options
 * `join`: Reference to Lazy to be joined.
 * `on`: Join column selection.
 * `as`: Retrieve foreign row under a specific alias name. (Optional)
 * `delete`: On delete action (see [supported actions section](#supported-actions)).
 * `update`: On cascade action (see [supported actions section](#supported-actions)).
 
-### 4.3.3. Model Declaration Examples
+### 4.1.2. Model Declaration Examples
 To give a better overall understanding of the Lazy's model features, Basic examples based aroud the implementation of the following class diagram are described within the next section.
 
 > :warning: **WIP, This section is incomplete.**
 
-#### 4.3.3.1. Simple User Model 
+#### 4.1.2.1. Simple User Model 
 ```js
 module.exports = {
     name: "LazyUser",
@@ -213,7 +201,7 @@ module.exports = {
 }
 ```
 
-#### 4.3.3.2. "Complex" Friend Model (with foreign key constraints)
+#### 4.1.2.2. "Complex" Friend Model (with foreign key constraints)
 ```js
 const {Lazy} = require('@timekadel/lazy');
 const LazyUser = Lazy.require('LazyUser');
@@ -255,7 +243,7 @@ module.exports = {
 ```
 
 
-## 4.4. Configuring Endpoints
+## 4.2. Configuring Endpoints
 ```js
 endpoint:{
     root: String,
@@ -263,11 +251,11 @@ endpoint:{
     methods: Object
 }
 ```
-## 4.5. Endpoint Configuration Options
 * `root`: Database's table name
 * `protected`: Lazy's [schema configuration object](#describing-schemas)
 * `methods`: Lazy's [schema configuration object](#describing-schemas)
-
+  
+> :warning: **WIP, This section is incomplete.**
 
 # 5. Changelog
 * `1.0.19`: 
