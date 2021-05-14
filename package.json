@@ -1,6 +1,6 @@
 {
   "name": "@timekadel/lazy",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Node.js API framework made by lazy developers for lazy developers",
   "main": "./index.js",
   "scripts": {
