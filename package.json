@@ -16,6 +16,10 @@
     "express",
     "socket.io"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/timekadel/lazy"
+  },
   "author": "roomz",
   "license": "MIT",
   "dependencies": {

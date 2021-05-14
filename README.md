@@ -183,6 +183,8 @@ fk:{
 ### 4.3.3. Model Declaration Examples
 To give a better overall understanding of the Lazy's model features, Basic examples based aroud the implementation of the following class diagram are described within the next section.
 
+> :warning: **WIP, This section is incomplete.**
+
 #### 4.3.3.1. Simple User Model 
 ```js
 module.exports = {
@@ -268,6 +270,9 @@ endpoint:{
 
 
 # 5. Changelog
+* `1.0.20`: 
+  * Created git repository
+  * Updated links to git repository
 * `1.0.19`: 
   * Updated Model declaration examples
   * 
