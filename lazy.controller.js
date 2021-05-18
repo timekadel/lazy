@@ -429,7 +429,7 @@ module.exports = class LazyEndpoint extends LazyModel{
             }
             parent = parent.parent;
         }
-        if(method.type != "post" && method.type != "list" && !this.virtual){
+        if(method.type != "post" && method.type != "list" && this.pk && !this.virtual){
             let self = this;
             params.push(async (req, res, next) => {
                 let resource = await self.findOne({ [self.pk]: req.params[self.route.identifier]})
