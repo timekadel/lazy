@@ -258,6 +258,9 @@ endpoint:{
 > :warning: **WIP, This section is incomplete.**
 
 # 5. Changelog
+* `1.0.21`: 
+  * Implemented direction for ORDER BY clause
+  * Patched lazy.controller.js to avoid automatically fetching resources for tables without private key
 * `1.0.20`: 
   * Improved instructions sections organisation/numbering
 * `1.0.19`: 
