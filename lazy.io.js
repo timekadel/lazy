@@ -88,6 +88,7 @@ const IO_DEFAULT = {
 
 /**
  * Describes IO wrapper
+ * TODO: maybe remove this ? is it useseful ? Maybe leave it as static class ?
  * @class
  * @requires io
  * @requires LazyTypes

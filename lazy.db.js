@@ -1,7 +1,18 @@
 'use strict'
 
 const mysql = require('mysql2');
+const {LazyTypes} = require('./lazy.utils')
 
+const LAZY_DB_DEFAULTS = {
+    host: "127.0.0.1",
+    database: "db",
+    user: "user",
+    password: "password",
+    port: 3306
+}
+
+
+//TODO: Improve this, it works but it sould be improved
 class LazyDB{
 
     constructor(){
@@ -18,6 +29,13 @@ class LazyDB{
 
     async init(config){
         if(!this._isInit){
+            // if(!LazyTypes.isString(config.host)){
+            //     throw new Error(`db's "host" should be a string. got ${LazyTypes.getFullType(config.host)}.`);
+            // }else if(!LazyTypes.isString(config.host)){
+
+            // }else if(!LazyTypes.isString(config.host)){
+
+            // }
             await this.setupTestEnvironment(config);
             this.db = process.env.NODE_ENV == "test" ? "test" : config.db
             this.pool = mysql.createPool({
@@ -25,7 +43,7 @@ class LazyDB{
                 database:   this.db,
                 user:       config.user,
                 password:   config.password,
-                port: 3306,
+                port:       config.port || LAZY_DB_DEFAULTS.port,
                 waitForConnections: true,
                 connectionLimit: 10,
                 queueLimit: 0
@@ -61,12 +79,13 @@ class LazyDB{
         return rows;
     }
 
-    static _sanitize_args(args){
-        const sanitize_regex = /?:(?![A-z0-9])./
-        return args.map((arg)=>{
-            arg.replace(sanitize_regex,'');
-        })
-    }
+    //TODO: remove this
+    // static _sanitize_args(args){
+    //     const sanitize_regex = /?:(?![A-z0-9])./
+    //     return args.map((arg)=>{
+    //         arg.replace(sanitize_regex,'');
+    //     })
+    // }
 
 }
 
