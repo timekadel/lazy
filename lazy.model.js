@@ -406,12 +406,12 @@ module.exports = class LazyModel{
         return await this._update(selector, data, true)
     }
 
-    async findAll(selector, order){
-        return await this._find(selector, false, order);
+    async findAll(selector, order, desc = false){
+        return await this._find(selector, false, order, desc);
     }
 
-    async findOne(selector){
-        return await this._find(selector, true)
+    async findOne(selector, order, desc = false){
+        return await this._find(selector, true, order, desc)
     }
 
     async checkExists(selector){
@@ -426,7 +426,7 @@ module.exports = class LazyModel{
         return await this._delete(selector, true);
     }
 
-    async _find(selector, one = false, order){
+    async _find(selector, one = false, order, desc = false){
         if(!this.virtual){
             let orderColumn = this.columns.find(column => column.name === order);
             if(!LazyTypes.isObject(selector)){
@@ -444,7 +444,7 @@ module.exports = class LazyModel{
             query += ` FROM ${this.table} `
             query += joinQueries.join("");
             query += this._prepareWhereClause(selector);
-            query += orderColumn ? ` ORDER BY ${orderColumn.fk ? `${orderColumn.fk.join.table}.${orderColumn.name}` : `${this.table}.${orderColumn.name}`}` : '';
+            query += orderColumn ? ` ORDER BY ${orderColumn.fk ? `${orderColumn.fk.join.table}.${orderColumn.name} ${desc ? " DESC" : " ASC"}` : `${this.table}.${orderColumn.name}`} ${desc ? " DESC" : " ASC"}` : '';
             query += one ? " LIMIT 1;" : ";";
             let raw = await LazyDB.execute(query, this._fetchSelectorValues(selector));
             let objectified = raw.map(row => {
